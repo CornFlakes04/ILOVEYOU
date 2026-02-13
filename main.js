@@ -51,8 +51,34 @@ function changeMessage() {
 
 
 function openLetter() {
-  document.querySelector(".envelope-wrapper").style.display = "none";
-  document.getElementById("loveMessage").classList.remove("hidden");
+  const envelope = document.querySelector(".envelope-wrapper");
+  const message = document.getElementById("loveMessage");
+
+  envelope.classList.add("hidden");
+  message.classList.remove("hidden");
 }
+
+
+
+
+const messageBox = document.getElementById("loveMessage");
+const envelope = document.querySelector(".envelope-wrapper");
+
+messageBox.addEventListener("click", () => {
+
+  // Start collapse animation
+  messageBox.classList.add("collapsing");
+
+  // After animation finishes
+  setTimeout(() => {
+    messageBox.classList.add("hidden");   // completely remove it
+    messageBox.classList.remove("collapsing");
+
+    envelope.classList.remove("hidden");  // show envelope again
+  }, 600); // match transition time
+});
+
+
+
 
 
